@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm_Yc7NK3q0ROue6fuPUw1gqjIb1R7qsLuqw&usqp=CAU");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+.container h3{
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    font-weight: bolder;
+    color: #fff;
+}
+
+.file-upload-section{
+    width: 50%;
+    margin: 10% auto 0;
+    padding: 50px;
+    background-image: url("https://media.istockphoto.com/id/1477609321/photo/abstract-background-with-neon-light.webp?b=1&s=170667a&w=0&k=20&c=_diYrcXWtLov-lCsOpTnEvBXkgQn25Dax2zb_4RoUyA=");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    box-shadow: 6px 8px 10px red;
+}
+.file-upload-section h4{
+    color: #fff;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    font-weight: bolder; 
+}
+.file-upload-section input{
+    margin-top: 20px;
+    width: 100%;
+    
+}
+.file-upload-section input[type="submit"]{
+    margin-top: 20px;
+    width: auto;
+    padding: 5px 10px;
+}
+.file-upload-section input[type="submit"]:hover{
+    background-color: red;
+    color: #fff;
+}
+@media screen and (max-width:992px) {
+    .file-upload-section{
+        width: 80%;
+    }
+}
+@media screen and (max-width:768px) {
+    .file-upload-section{
+        width: 100%;
+        padding: 10px;
+    }
+}
+.result-section{
+    margin: 6% 0 0 0;
+    text-align: center;
+}
+
+.result-section img{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  object-position: center;
+}
