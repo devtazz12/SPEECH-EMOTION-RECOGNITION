@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 import os
 from .models import ParallelModel
 import torch
-import tensorflow as tf
 import librosa
 import numpy as np
 
 # Create your views here.
 EMOTIONS = {1:'neutral', 2:'calm', 3:'happy', 4:'sad', 5:'angry', 6:'fear', 7:'disgust', 0:'surprise'}
 SAMPLE_RATE = 48000
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 LOAD_PATH = os.path.join(os.getcwd(),'models') # loading the model
 model = ParallelModel(len(EMOTIONS))
@@ -21,9 +21,10 @@ def index(request):
 def audioSubmit(request):
     if request.method == 'POST':
         audiofile = request.POST['audiofile']
-    audio, sample_rate = librosa.load(audiofile, duration=3, offset=0.5, sr=SAMPLE_RATE)
+    audio, sample_rate = librosa.load(audiofile, duration=3, offset=0.5,sr=SAMPLE_RATE)
     signal = np.zeros((int(SAMPLE_RATE*3,)))
     signal[:len(audio)] = audio
+    mel_spectrogram = getMELspectrogram(signal, SAMPLE_RATE)
 
     return render(request, 'index.html')
 
@@ -61,13 +62,12 @@ def getMELspectrogram(audio, sample_rate):
     mel_spec_db = librosa.power_to_db(mel_spec, ref=np.max)
     return mel_spec_db
 
-# test function
-audio, sample_rate = librosa.load(data.loc[0,'Path'], duration=3, offset=0.5,sr=SAMPLE_RATE)
-signal = np.zeros((int(SAMPLE_RATE*3,)))
-signal[:len(audio)] = audio
-mel_spectrogram = getMELspectrogram(signal, SAMPLE_RATE)
-librosa.display.specshow(mel_spectrogram, y_axis='mel', x_axis='time')
-print('MEL spectrogram shape: ',mel_spectrogram.shape)
+X_test_tensor = torch.tensor(X_test, device=device).float()
+
+# If necessary, reshape or preprocess X_test_tensor according to your model's input requirements
+
+# Call the validate function with the single audio file tensor
+test_loss, test_acc, predictions = validate(X_test_tensor.unsqueeze(0), torch.tensor([your_label], device=device))
 
 
 
