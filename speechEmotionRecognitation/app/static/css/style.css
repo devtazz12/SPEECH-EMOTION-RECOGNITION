@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm_Yc7NK3q0ROue6fuPUw1gqjIb1R7qsLuqw&usqp=CAU");
+    
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -14,33 +14,31 @@ body{
     text-align: center;
     font-family: 'Russo One', sans-serif;
     font-weight: bolder;
-    color: #fff;
+    font-size: 60px;
+    color: #070707;
+    text-shadow: 2px 2px #a8a8a8;
 }
 
 .file-upload-section{
     width: 50%;
     margin: 10% auto 0;
     padding: 50px;
-    background-image: url("https://media.istockphoto.com/id/1477609321/photo/abstract-background-with-neon-light.webp?b=1&s=170667a&w=0&k=20&c=_diYrcXWtLov-lCsOpTnEvBXkgQn25Dax2zb_4RoUyA=");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-color: #fff;
     border-radius: 30px;
-    box-shadow: 6px 8px 10px red;
+    box-shadow: 6px 8px 10px rgb(152, 152, 152);
 }
 .file-upload-section h4{
-    color: #fff;
+    color: #000000;
     text-align: center;
     font-family: 'Russo One', sans-serif;
     font-weight: bolder; 
 }
 .file-upload-section input{
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     
 }
 .file-upload-section input[type="submit"]{
-    margin-top: 20px;
     width: auto;
     padding: 5px 10px;
 }
@@ -72,3 +70,14 @@ body{
   object-fit: cover;
   object-position: center;
 }
+.result-section h4{
+    text-shadow: 2px 2px #a8a8a8;
+    font-size: 50px;
+    font-weight: bold; 
+    text-transform: uppercase;
+}
+
+
+
+
+  

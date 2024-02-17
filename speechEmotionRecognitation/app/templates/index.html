@@ -8,23 +8,54 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-image:url({% static "images/background.jpg" %});">
  
-    <div class="container p-md-5">
-        <h3>SPEECH EMOTION ROCOGNITION SYSTEM USING DEEP LEARNING</h3>
+    <div class="container p-md-3">
+        <h3>SPEECH EMOTION ROCOGNITION SYSTEM <br> USING DEEP LEARNING</h3>
         <div class="file-upload-section">
             <h4>Upload Your Audio Files</h4>
             <form action="{% url "audio_submit" %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="file" name="audiofile" accept="audio/*">
-                <br>
-                <input type="submit" value="Upload">
+                <label for="audiofile">Select a file:</label><br>
+                <input type="file" id="audiofile" name="audiofile" accept="audio/*" required><br><br>
+                <input type="submit"  value="Upload">
+                <input type="button" data-toggle="modal" data-target="#exampleModalCenter"  value="Click to show Result">
             </form>
         </div>
-        <div class="result-section">
-            <img src="{% static "images/angry.jpg" %}" alt="">
-            <h4>Angry</h4>
+    
+       
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Results for audio:{{audiofile}}</h5>
+                        <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <audio id="myAudio" controls>
+                            <source src="{{audiofile.audio_file.url}}" type="audio/ogg">
+                            <source src="{{audiofile.audio_file.url}}" type="audio/mpeg">
+                            <source src="{{audiofile.audio_file.url}}" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                          
+                        <div class="content">
+                            <div class="result-section">
+                                <img src="{% static "images/" %}{{emotion}}.png" alt="">
+                                <h4>{{emotion}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
 
@@ -32,8 +63,10 @@
 
 
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="{% static "js/main.js" %}"></script>
 </body>
 </html>
