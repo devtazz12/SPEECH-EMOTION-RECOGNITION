@@ -14,6 +14,7 @@ from keras.models import Sequential
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
+import seaborn as sns
 
 
 from config import SAVE_DIR_PATH
@@ -81,9 +82,20 @@ class TrainModel:
         print(len(new_y_test))
         matrix = confusion_matrix(new_y_test, new_max_values)
         print(accuracy_score(new_y_test, new_max_values))
-        print(classification_report(new_y_test, new_max_values))
-        print(matrix)
+        report = classification_report(new_y_test, new_max_values)
 
+        # Plot confusion matrix
+        plt.figure(figsize=(10, 7))
+        sns.heatmap(matrix, annot=True, cmap='Blues')
+        plt.xlabel('Predicted labels')
+        plt.ylabel('True labels')
+        plt.title('Confusion Matrix')
+        plt.savefig('my_media/confusion_matrix.png')
+
+        # Save classification report as text file
+        with open('classification_report.txt', 'w') as f:
+            f.write(report)
+         
         model_name = 'Emotion_Voice_Detection_Model.h5'
 
         # Save model and weights
