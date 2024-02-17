@@ -28,4 +28,6 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+## if above command run successfully then you can able to see the web app in your [localhost:8000](https://localhost:8000/) 
+
 
