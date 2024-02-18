@@ -2,9 +2,14 @@
 import keras
 import librosa
 import numpy as np
+import pathlib
+import os
+
+working_dir_path = pathlib.Path().absolute()
 
 
-from .config import MODEL_DIR_PATH
+
+
 
 
 class LivePredictions:
@@ -17,7 +22,7 @@ class LivePredictions:
         Init method is used to initialize the main parameters.
         """
         self.file = file
-        self.path = MODEL_DIR_PATH + '\Emotion_Voice_Detection_Model.h5'
+        self.path = os.path.join(working_dir_path , "app","model","Emotion_Voice_Detection_Model.h5") 
         self.loaded_model = keras.models.load_model(self.path)
 
     def make_predictions(self):
