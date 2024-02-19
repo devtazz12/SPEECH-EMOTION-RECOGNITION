@@ -88,7 +88,38 @@ body{
     text-align: center;  
 }
 
+/* for recording css */
 
+/* Keyframes for the recording animation */
+@keyframes recordingAnimation {
+    0% { background-color: #ff0000; transform: scale(1); }
+    50% { background-color: #ffcccc; transform: scale(1.1); }
+    100% { background-color: #ff0000; transform: scale(1); }
+}
 
+/* Apply the animation to the button when it has the 'recording' class */
+.recording {
+    animation-name: recordingAnimation;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1; /* Run animation once */
+}
 
-  
+/* Button styling */
+button#record-btn {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Adjust button style during animation */
+.recording {
+    background-color: #ffcccc;
+    transform: scale(1.1);
+}
+
