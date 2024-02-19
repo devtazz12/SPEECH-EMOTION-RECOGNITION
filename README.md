@@ -20,10 +20,11 @@ Feel free to comment if you are not able to understand.
 ```bash
 git clone https://github.com/devtazz12/SPEECH-EMOTION-RECOGNITION.git
 ```
-### After that search the directory where manage.py file is located. and run the command 
+### find the directory where requirements.txt file is located and run below command
 ```bash
 pip install -r requirements.txt
 ```
+### After that search the directory where manage.py file is located and run below command 
 ```bash
 python manage.py runserver
 ```
